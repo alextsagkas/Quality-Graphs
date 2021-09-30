@@ -40,7 +40,7 @@ logv2 = np.log(v2)
 
 
 # Fitting
-# The Function we use to fit our data
+# The function we use to fit our data on
 def func(x, a, b):
     return (a * x) + b
 
@@ -54,7 +54,7 @@ popt2, pcov2 = curve_fit(func, logv2, logp2)
 # err2 = (δa2,δb2)
 err2 = np.sqrt(np.diag(pcov2))
 
-# Integrals
+# Integrals (=work done)
 I1 = integrate.trapz(p1, v1)
 I2 = integrate.trapz(p2, v2)
 
@@ -112,8 +112,10 @@ fig.tight_layout()
 
 plt.show()
 
-# Printing
+# Print lines' slopes and constant terms
 print(f"a_1 ± δa_1 = {popt1[0]} ± {err1[0]}, b_1 ± δb_1 = {popt1[1]} ± {err1[1]} \n")
 print(f"a_2 ± δa_2 = {popt2[0]} ± {err2[0]}, b_2 ± δb_2 = {popt2[1]} ± {err2[1]} \n")
+# Print mean temperature (=const)
 print(f"T_1 = {np.mean(t1)} K, T_2 = {np.mean(t2)} K \n")
+# Print work done
 print(f"I_1 = {I1} J, I_2 = {I2} J")
